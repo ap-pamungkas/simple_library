@@ -1,98 +1,95 @@
 # Simple Library
 
-A simple library management system built with Laravel.
+Sistem manajemen perpustakaan sederhana yang dibangun dengan Laravel.
 
-## Requirements
+## Persyaratan Sistem
 
-- PHP 8.2 or higher
+- PHP 8.2 atau lebih tinggi
 - Composer
-- SQLite (default database)
-- Node.js & NPM (for asset compilation)
+- MySQL Database
+- Node.js & NPM (untuk kompilasi aset)
 
-## Installation
+## Instalasi
 
-1. Clone the repository
-2. Install PHP dependencies:
+1. Clone repository
+2. Install dependensi PHP:
    ```bash
    composer install
    ```
 
-3. Copy environment file:
+3. Copy file environment:
    ```bash
    cp .env.example .env
    ```
 
-4. Generate application key:
+4. Konfigurasi database MySQL di file `.env`:
+   ```
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=nama_database_anda
+   DB_USERNAME=username_anda
+   DB_PASSWORD=password_anda
+   ```
+
+5. Generate application key:
    ```bash
    php artisan key:generate
    ```
 
-5. Create SQLite database:
-   ```bash
-   touch database/database.sqlite
-   ```
-
-6. Run database migrations:
+6. Jalankan migrasi database:
    ```bash
    php artisan migrate
    ```
 
-7. Seed the database (optional):
+7. Isi data awal (opsional):
    ```bash
    php artisan db:seed
    ```
 
-## Running the Application
+## Menjalankan Aplikasi
 
-Start the development server:
+Mulai server development:
 ```bash
 php artisan serve
 ```
 
-The application will be available at `http://127.0.0.1:8000`
+Aplikasi akan tersedia di `http://127.0.0.1:8000`
 
-## API Documentation
+## Dokumentasi API
 
-This project includes a Postman collection for API testing:
+Project ini menyertakan koleksi Postman untuk testing API:
 
 **File:** `simple_library.postman_collection.json`
 
-### Available API Endpoints:
+### Endpoint API yang Tersedia:
 
-#### Authentication
-- `POST /api/register` - User registration
-- `GET /api/login` - User login
+#### Autentikasi
+- `POST /api/register` - Registrasi pengguna
+- `GET /api/login` - Login pengguna
 
-#### Books Management (Requires Authentication)
-- `GET /api/books` - Get all books
-- `GET /api/books/{id}` - Get book by ID
-- `POST /api/books` - Create new book
-- `PUT /api/books/{id}` - Update book
-- `DELETE /api/books/{id}` - Delete book
+#### Manajemen Buku (Membutuhkan Autentikasi)
+- `GET /api/books` - Mendapatkan semua buku
+- `GET /api/books/{id}` - Mendapatkan buku berdasarkan ID
+- `POST /api/books` - Membuat buku baru
+- `PUT /api/books/{id}` - Update buku
+- `DELETE /api/books/{id}` - Hapus buku
 
-### Authentication Flow:
-1. Register a new user via `/api/register`
-2. Login via `/api/login` to get bearer token
-3. Use the token in Authorization header for protected routes
+### Alur Autentikasi:
+1. Registrasi pengguna baru melalui `/api/register`
+2. Login melalui `/api/login` untuk mendapatkan bearer token
+3. Gunakan token tersebut di header Authorization untuk route yang dilindungi
 
-## Development Commands
+## Perintah Development
 
 ```bash
-# Run all development services
+# Jalankan semua layanan development
 composer run dev
 
-# Run tests
+# Jalankan testing
 composer run test
 
-# Clear cache
+# Bersihkan cache
 php artisan cache:clear
 php artisan config:clear
 ```
-
-## Project Structure
-
-- `app/Models/` - Eloquent models (User, Book)
-- `app/Http/Controllers/` - API controllers
-- `database/migrations/` - Database migrations
-- `routes/api.php` - API routes definition
-- `simple_library.postman_collection.json` - Postman API collection
