@@ -80,16 +80,4 @@ Project ini menyertakan koleksi Postman untuk testing API:
 2. Login melalui `/api/login` untuk mendapatkan bearer token
 3. Gunakan token tersebut di header Authorization untuk route yang dilindungi
 
-## Perintah Development
 
-```bash
-# Jalankan semua layanan development
-composer run dev
-
-# Jalankan testing
-composer run test
-
-# Bersihkan cache
-php artisan cache:clear
-php artisan config:clear
-```
